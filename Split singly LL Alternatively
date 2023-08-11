@@ -1,0 +1,76 @@
+/*
+The structure of node class is:
+class Node {
+    int data;
+    Node next;
+    
+    public Node(int head){
+        this.data = head;
+        this.next = null;
+    }
+}
+*/
+
+/*
+
+class GFG {
+    public static Node a; //store the head of first list in this
+    public static Node b; //store the head of second list in this
+}
+*/
+
+
+class Solution {
+    public void alternatingSplitList(Node head){
+       //Your code here
+       
+        if(head==null||head.next==null){
+            GFG.a=head;
+            return;
+        }
+        
+        Node p1=null,p2=null;
+        boolean flag=true;
+        
+        while(head!=null)
+        {
+            if(flag==true)
+            {
+                if(GFG.a==null)
+                {
+                    GFG.a=p1=head;
+                    head=head.next;
+                    p1.next=null;
+                }
+                else
+                {
+                    p1.next=head;
+                    p1=head;
+                    head=head.next;
+                    p1.next=null;
+                }
+                flag=false;
+            }
+
+            else
+            {
+                if(GFG.b==null)
+                {
+                    GFG.b=p2=head;
+                    head=head.next;
+                    p2.next=null;
+                }
+
+                else
+                {
+                    p2.next=head;
+                    p2=head;
+                    head=head.next;
+                    p2.next=null;
+                }
+                
+                flag=true;
+            }
+        }
+    }
+}
